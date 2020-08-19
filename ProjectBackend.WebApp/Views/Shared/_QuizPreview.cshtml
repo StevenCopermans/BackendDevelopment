@@ -1,0 +1,25 @@
+﻿@model ProjectBackend.Models.Quiz
+
+    <div class="card mb-3">
+        <h3 class="card-header">@Model.Label</h3>
+        <div class="card-body">
+            <h5 class="card-title">Maximum deelnemers:</h5>
+            <h6 class="card-subtitle text-muted">Deadline inschrijving</h6>
+        </div>
+        <div class="card-body">
+            <p class="card-text">@Model.Description</p>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="card-body">
+                <a asp-action="Quiz" asp-route-id="@Model.ID" class="btn btn-primary card-link">Take quiz!</a>
+            </div>
+        }
+        else
+        {
+            <div class="card-body">
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-info card-link">Login!</a>
+            </div>
+        }
+    </div>

@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";}
+
+<div>
+    <h1 class="display-4">Create a new Quiz!</h1>
+
+    <form enctype="multipart/form-data" asp-action="TryCreateQuiz">
+        <div class="form-group">
+            <label for="Title">Quiz title: </label>
+            <input type="text" class="form-control" name="Title" id="Title" placeholder="Quiz title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Quiz Description: </label>
+            <textarea class="form-control" name="Description" id="Description" placeholder="Quiz description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Difficulty">Quiz difficulty: </label>
+            <select name="Difficulty" id="Difficulty">
+                @foreach (var item in Model)
+                {
+                    <partial name="_DifficultyOption" model="item" />
+                }
+            </select>
+        </div>
+
+        <div class="js-questions">
+            <fieldset name="q1" style="margin-top: 32px;">
+                <div class="form-group">
+                    <label for="q1">Question 1: </label>
+                    <input type="text" class="form-control" name="q1" id="q1" placeholder="Question 1">
+                </div>
+                <div class="js-q1">
+                    <div class="form-group" style="margin-left: 64px;">
+                        <input class="form-check-input" type="radio" name="q1Radio" id="q1Radio" value="q1a1" checked>
+                        <label for="q1a1">Answer 1</label>
+                        <input type="text" class="form-control" name="q1a1" id="q1a1" placeholder="Answer 1" required>
+                    </div>
+                    <div class="form-group" style="margin-left: 64px;">
+                        <input class="form-check-input" type="radio" name="q1Radio" id="q1Radio" value="q1a2">
+                        <label for="q1a2">Answer 2</label>
+                        <input type="text" class="form-control" name="q1a2" id="q1a2" placeholder="Answer 2" required>
+                    </div>
+                </div>
+                <a style="margin-left: 64px; color: #fff;" class="btn btn-primary" onclick="AddAnswer(event)">Add answer</a>
+            </fieldset>
+        </div>
+
+        <script>
+            let questionCount = 1;
+            function AddQuestion() {
+                ++questionCount;
+
+                const questions = document.querySelector('.js-questions');
+                questions.innerHTML += `
+                                                            <fieldset name="q${questionCount}" style="margin-top: 32px;">
+                                                                <div class="form-group">
+                                                                    <label for="q${questionCount}">Question ${questionCount}: </label>
+                                                                    <input type="text" class="form-control" id="q${questionCount}" name="q${questionCount}" placeholder="Question ${questionCount}">
+                                                                </div>
+                                                                <div class="js-q${questionCount}">
+                                                                    <div class="form-group" style="margin-left: 64px;">
+                                                                        <input class="form-check-input" type="radio" name="q${questionCount}Radio" id="q${questionCount}Radio" value="q${questionCount}a1" checked>
+                                                                        <label for="q${questionCount}a1">Answer 1</label>
+                                                                        <input type="text" class="form-control" name="q${questionCount}a1" id="q${questionCount}a1" placeholder="Answer 1" required>
+                                                                    </div>
+                                                                    <div class="form-group" style="margin-left: 64px;">
+                                                                        <input class="form-check-input" type="radio" name="q${questionCount}Radio" id="q${questionCount}Radio" value="q${questionCount}a2">
+                                                                        <label for="q${questionCount}a2">Answer 2</label>
+                                                                        <input type="text" class="form-control" name="q${questionCount}a2" id="q${questionCount}a2" placeholder="Answer 2" required>
+                                                                    </div>
+                                                                </div>
+                                                                <a style="margin-left: 64px; color: #fff;" class="btn btn-primary" onclick="AddAnswer(event)">Add answer</a>
+                                                            </fieldset>
+                                                        `;
+            }
+
+            function AddAnswer(event) {
+                const answers = document.querySelector('.js-' + event.target.parentNode.name);
+                const question = parseInt(event.target.parentNode.name.substring(1));
+
+                answers.innerHTML += `
+                                                            <div class="form-group" style="margin-left: 64px;">
+                                                                <input class="form-check-input" type="radio" name="q${question}Radio" id="q${question}Radio" value="q${question}a${answers.childElementCount + 1}">
+                                                                <label for="q${question}a${answers.childElementCount + 1}">Answer ${answers.childElementCount + 1}</label>
+                                                                <input type="text" class="form-control" name="q${question}a${answers.childElementCount + 1}" id="q${question}a${answers.childElementCount + 1}" placeholder="Answer ${answers.childElementCount + 1}" required>
+                                                            </div>
+                                                        `;
+            }
+        </script>
+
+        <a style="margin-top: 96px; color: #fff;" class="btn btn-primary" onclick="AddQuestion()">Add question</a>
+        <button style="margin-top: 96px;" type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

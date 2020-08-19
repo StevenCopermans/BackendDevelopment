@@ -1,0 +1,8 @@
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\bin\Debug\netcoreapp3.1\ProjectBackend.Models.deps.json
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\bin\Debug\netcoreapp3.1\ProjectBackend.Models.dll
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\obj\Debug\netcoreapp3.1\ProjectBackend.Models.AssemblyInfoInputs.cache
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\obj\Debug\netcoreapp3.1\ProjectBackend.Models.AssemblyInfo.cs
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\obj\Debug\netcoreapp3.1\ProjectBackend.Models.csprojAssemblyReference.cache
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\bin\Debug\netcoreapp3.1\ProjectBackend.Models.pdb
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\obj\Debug\netcoreapp3.1\ProjectBackend.Models.dll
+C:\Users\steve\Desktop\Backend\ProjectBackend\ProjectBackend.Models\obj\Debug\netcoreapp3.1\ProjectBackend.Models.pdb
